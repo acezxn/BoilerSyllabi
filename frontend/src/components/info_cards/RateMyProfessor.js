@@ -1,6 +1,7 @@
 import { Box, Link, Typography } from "@mui/material";
 import { useEffect, useState } from "react"
 import { cardStyle } from "../../themes/style/info_cards/info_card";
+import { theme } from "../../themes/theme";
 
 export const RateMyProfessor = ({ data }) => {
     const [rateMyProfessorData, setRateMyProfessorData] = useState(null);
@@ -24,7 +25,7 @@ export const RateMyProfessor = ({ data }) => {
                         <Typography sx={{ fontWeight: "bold" }}>Feedback:</Typography>
                         <Typography sx={{ display: "inline-block" }}>{rateMyProfessorData.summary}</Typography>
                         <Typography sx={{ fontWeight: "bold" }}>Reference:</Typography>
-                        <Link sx={{ display: "inline-block" }} href={rateMyProfessorData.link}>{rateMyProfessorData.link}</Link>
+                        <Link sx={{ display: "inline-block", color: theme.palette.secondary.main }} href={rateMyProfessorData.link}>{rateMyProfessorData.link}</Link>
                         <br />
                     </>
                 ) : (

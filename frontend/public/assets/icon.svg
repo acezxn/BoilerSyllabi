@@ -1,226 +1,30 @@
-<svg
-    width="800"
-    height="600"
-    xmlns="http://www.w3.org/2000/svg"
->
-    <g>
-        <title>Layer 1</title>
-        <rect
-            id="svg_1"
-            height="15"
-            width="171.99998"
-            y="449"
-            x="400.00291"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_2"
-            height="15"
-            width="172.0625"
-            y="482"
-            x="399.69044"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_3"
-            height="16"
-            width="171.75"
-            y="515"
-            x="400.12794"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_5"
-            height="17"
-            width="225.18748"
-            y="300"
-            x="382.06546"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_6"
-            height="0"
-            width="1"
-            y="268"
-            x="635.94"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_7"
-            height="247.99999"
-            width="18"
-            y="317.00001"
-            x="588.94"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_8"
-            height="251.06252"
-            width="18"
-            y="299.93748"
-            x="365.25299"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_9"
-            height="16.99999"
-            width="224.00005"
-            y="548"
-            x="365.18791"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_10"
-            height="69"
-            width="19"
-            y="285"
-            x="332.94"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_11"
-            height="71.5625"
-            width="21"
-            y="285.5"
-            x="620.94"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_12"
-            height="16"
-            width="89"
-            y="269"
-            x="332.94"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_13"
-            height="15"
-            width="0"
-            y="263"
-            x="325.94"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_14"
-            height="17"
-            width="88.0625"
-            y="271"
-            x="554.25299"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_17"
-            height="15"
-            width="0"
-            y="530"
-            x="338.94"
-            fill="#fff"
-            stroke="#000"
-            transform="rotate(-179.164 338.94 537.94)"
-        />
-        <rect
-            id="svg_18"
-            height="69"
-            width="20"
-            y="514"
-            x="332.94"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_19"
-            height="19"
-            width="89"
-            y="583"
-            x="332.94"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_20"
-            height="19"
-            width="84"
-            y="580"
-            x="558.94"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_21"
-            height="63"
-            width="18"
-            y="517"
-            x="624.065"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_22"
-            height="40"
-            width="45"
-            y="333"
-            x="399.62794"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_23"
-            height="0"
-            width="9"
-            y="270"
-            x="384.94"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_26"
-            height="15"
-            width="171.375"
-            y="418"
-            x="400.94001"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_27"
-            height="15"
-            width="171.625"
-            y="389"
-            x="400.69044"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_28"
-            height="15"
-            width="112"
-            y="333"
-            x="458.94044"
-            fill="#fff"
-            stroke="#000"
-        />
-        <rect
-            id="svg_30"
-            height="15"
-            width="112"
-            y="359"
-            x="458.94044"
-            fill="#fff"
-            stroke="#000"
-        />
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg" stroke="null" style="vector-effect: non-scaling-stroke;">
+
+    <g stroke="null">
+        <title stroke="null">Layer 1</title>
+        <rect stroke-width="0" stroke="#000" id="svg_1" height="15" width="171.99998" y="311.94118" x="304.15076" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_2" height="15" width="172.0625" y="344.94118" x="303.83825" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_3" height="16" width="171.75" y="377.94118" x="304.27574" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" style="vector-effect: non-scaling-stroke;" id="svg_5" height="17" width="225.18748" y="162.94118" x="286.21326" fill="#fff" />
+        <rect height="0" stroke-width="0" stroke="#000" style="vector-effect: non-scaling-stroke;" id="svg_6" width="1" y="130.94118" x="540.08824" fill="#fff" />
+        <rect stroke="#000" stroke-width="0" id="svg_7" height="249.39535" width="18" y="178.54583" x="493.08824" fill="#fff" />
+        <rect stroke="#000" stroke-width="0" id="svg_8" height="251.52765" width="18" y="162.87866" x="269.40074" fill="#fff" />
+        <rect stroke="#000" stroke-width="0" id="svg_9" height="16.99999" width="224.00004" y="410.94118" x="269.23074" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_10" height="69" width="19" y="148.26375" x="235.57542" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_11" height="69" width="19" y="149.08633" x="528.31405" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_12" height="17" width="89" y="132.96682" x="235.44308" fill="#fff" />
+        <rect width="0" stroke-width="0" stroke="#000" style="vector-effect: non-scaling-stroke;" id="svg_13" height="15" y="125.94118" x="229.08824" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_14" height="17" width="89" y="133.94117" x="458.40074" fill="#fff" />
+        <rect width="0" stroke-width="0" stroke="#000" style="vector-effect: non-scaling-stroke;" id="svg_17" height="15" y="392.94118" x="243.08824" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_18" height="69" width="19" y="377.26375" x="233.08824" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_19" height="17" width="89" y="445.94118" x="233.41082" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_20" height="17" width="89" y="442.94118" x="463.09832" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_21" height="69" width="19" y="375.10247" x="532.90679" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_22" height="40" width="45" y="195.94118" x="303.77574" fill="#fff" />
+        <rect height="0" stroke-width="0" stroke="#000" id="svg_23" width="9" y="132.94118" x="289.08824" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_26" height="15" width="171.375" y="280.94118" x="305.08824" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_27" height="15" width="171.625" y="251.94118" x="304.71324" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" style="vector-effect: non-scaling-stroke;" id="svg_28" height="15" width="112" y="195.94118" x="363.08824" fill="#fff" />
+        <rect stroke-width="0" stroke="#000" id="svg_30" height="15" width="112" y="221.94118" x="363.08824" fill="#fff" />
     </g>
 </svg>
