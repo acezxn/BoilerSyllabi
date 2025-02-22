@@ -2,6 +2,7 @@ You are tasked with organizing a university course syllabus into the following J
 
 {
   "overview": { "title": "", "course_id": "", "description": "", "learning_objectives": [""] },
+  "contact": [ {"name" : "", "role" : "", "contact": ""} ],
   "schedule": {
 	"lecture"	: [ {"date": "", "duration": 0} ],
 	"lab"    	: [ {"date": "", "duration": 0} ],

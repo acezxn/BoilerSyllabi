@@ -1,3 +1,8 @@
+import Typography from '@mui/material/Typography';
+
+
 export const Home = () => {
-    return (<h1>Test</h1>)
+    return <>
+        <Typography color="primary">Hello</Typography>
+    </>
 }
