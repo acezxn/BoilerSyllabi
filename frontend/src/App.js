@@ -16,7 +16,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/analyzer" element={<Analyzer />}></Route>
         </Routes>
       </Router>
     </ThemeProvider>

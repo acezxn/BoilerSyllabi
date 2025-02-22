@@ -21,7 +21,6 @@ export const Home = () => {
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file && file.type === 'application/pdf') {
-            console.log(file)
             setSelectedPdf(file);
         } else {
             setSelectedPdf(null);
