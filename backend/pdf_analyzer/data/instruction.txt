@@ -34,6 +34,7 @@ Note:
 - Arrays can contain any number of items.
 - The "important_info" array should include important details for each section.
 - Dates should be formatted as "[Day] 00:00" (e.g., Tuesday 00:00) in 24-hour time.
+- Names of people should be composed of first name, middle name, and last name (e.g. George Bunch Adams).
 - Course ID should be composed of a course name abbreviation and a five digit ID (e.g. ENGL10600). Leave the last two digits 0 if only three digits are provided
 - Do not format in markdown, just plain text.
 
