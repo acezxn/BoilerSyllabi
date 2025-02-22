@@ -1,6 +1,7 @@
 import { Analyzer } from "./Analyzer";
 import React, { useState } from 'react';
 import { Box, Button, CssBaseline, Typography } from '@mui/material';
+import { MdOutlineDocumentScanner } from "react-icons/md";
 
 
 const bannerStyle = {
@@ -34,13 +35,14 @@ export const Home = () => {
             <CssBaseline />
             {
                 selectedPdf ? (
-                    <Analyzer file={selectedPdf}/>
+                    <Analyzer />
                 ) : (
                     <>
                         <img style={bannerStyle} src="assets/banner.gif" alt="Full Screen Banner" class="full-screen-banner" />
                         <Box sx={{ marginTop: 10 }}>
                             <Typography variant="h3" sx={{ zIndex: 1 }}>BoilerSyllabi</Typography>
                             <br />
+                            {/* <MdOutlineDocumentScanner size={300} /> */}
                             <img src='/assets/icon.svg' width={500}/>
                             <br />
                             <br />

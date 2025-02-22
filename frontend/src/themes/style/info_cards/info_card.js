@@ -1,6 +1,6 @@
 import { theme } from "../../theme"
 
-export const cardStyle = {
+export const cardStype = {
     position: "relative",
     backgroundColor: theme.palette.background.paper,
     boxShadow: "rgba(5, 0, 24, 0.2) 0px 5px 16px",
