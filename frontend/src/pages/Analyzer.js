@@ -6,6 +6,9 @@ import { Schedule } from '../components/info_cards/Schedule';
 import { ImportantEvents } from '../components/info_cards/ImportantEvents';
 import { Grading } from '../components/info_cards/Grading';
 import { useEffect, useState } from 'react';
+import { GradedItems } from '../components/info_cards/GradedItems';
+import { Policies } from '../components/info_cards/Policies';
+import { TextbookResources } from '../components/info_cards/TextbookResources';
 
 const dashboardStyle = {
     margin: 10,
@@ -16,8 +19,19 @@ const dashboardStyle = {
     gridTemplateColumns: "auto auto auto"
 }
 
-export const Analyzer = (props) => {
+export const Analyzer = ({file}) => {
     const [width, setWidth] = useState(window.innerWidth);
+    const [selectedPdf, setSelectedPdf] = useState(null);
+    const [pdfAnalysisData, setPdfAnalysisData] = useState(null);
+    const [profAnalysisData, setProfAnalysisData] = useState(null);
+
+    const analyzeFile = () => {
+        // TODO: send request to backend to analyze pdf
+    }
+
+    const analyzeProfessor = () => {
+        // TODO: send request to backend to analyze professor
+    }
 
     useEffect(() => {
         const updateWidth = () => {
@@ -28,8 +42,8 @@ export const Analyzer = (props) => {
     }, []);
 
     useEffect(() => {
-        console.log(width);
-    }, [width])
+        setSelectedPdf(file);
+    }, [file])
 
     const data = cs307TempData.data;
 
@@ -41,15 +55,18 @@ export const Analyzer = (props) => {
                     width > 1200 ? (
                         <>
                             <div style={{ minWidth: "calc(100vw / 3 - 20)" }}>
-                                <ContactInfo data={data.contact} />
                                 <Overview data={data.overview} />
+                                <ContactInfo data={data.contact} />
+                                <Policies data={data.policies} />
                             </div>
                             <div style={{ minWidth: "calc(100vw / 3 - 20)" }}>
                                 <Schedule data={data.schedule} />
-                                <Grading data={data.grading} />
+                                <ImportantEvents data={data.important_events} />
+                                <TextbookResources data={data.textbook_resources} />
                             </div>
                             <div style={{ minWidth: "calc(100vw / 3 - 20)" }}>
-                                <ImportantEvents data={data.important_events} />
+                                <Grading data={data.grading} />
+                                <GradedItems data={data.graded_items} />
                             </div>
                         </>
                     ) : (
@@ -58,23 +75,29 @@ export const Analyzer = (props) => {
                                 width > 800 ? (
                                     <>
                                         <div style={{ minWidth: "calc(100vw / 2 - 20)" }}>
-                                            <ContactInfo data={data.contact} />
                                             <Overview data={data.overview} />
-                                            <Schedule data={data.schedule} />
+                                            <ContactInfo data={data.contact} />
+                                            <Policies data={data.policies} />
+                                            <TextbookResources data={data.textbook_resources} />
                                         </div>
                                         <div style={{ minWidth: "calc(100vw / 2 - 20)" }}>
+                                            <Schedule data={data.schedule} />
                                             <ImportantEvents data={data.important_events} />
                                             <Grading data={data.grading} />
+                                            <GradedItems data={data.graded_items} />
                                         </div>
                                     </>
                                 ) : (
                                     <>
                                         <div style={{ minWidth: "calc(100vw - 20)" }}>
-                                            <ContactInfo data={data.contact} />
                                             <Overview data={data.overview} />
                                             <Schedule data={data.schedule} />
+                                            <ContactInfo data={data.contact} />
                                             <ImportantEvents data={data.important_events} />
                                             <Grading data={data.grading} />
+                                            <GradedItems data={data.graded_items} />
+                                            <Policies data={data.policies} />
+                                            <TextbookResources data={data.textbook_resources} />
                                         </div>
                                     </>
                                 )
