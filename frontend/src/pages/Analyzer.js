@@ -2,7 +2,10 @@ import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import { CssBaseline, Typography } from '@mui/material';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import StarBorder from '@mui/icons-material/StarBorder';
+import { CssBaseline, ListItemIcon, Typography } from '@mui/material';
 import { cs307TempData } from '../static/temp';
 import GradingPieChart from '../components/GradingPieChart';
 
@@ -38,6 +41,43 @@ export const Analyzer = (props) => {
         <Box sx={{ flexGrow: 1 }}>
             <CssBaseline />
             <Grid container spacing={2}>
+            <Grid size={12}>
+                <Header>{data.overview.course_id}</Header>
+                <Value>{data.overview.description}</Value>
+                <List>
+                {data.overview.learning_objectives.map((item, index) => {
+                    return (
+                        <ListItem>
+                            <ListItemIcon>
+                                <StarBorder sx={{ color: "#ffffff"}}></StarBorder>
+                            </ListItemIcon>
+                            <Value>{item}</Value>
+                        </ListItem>
+                    )
+                })}
+                </List>
+            </Grid>
+            <Grid size={5}>
+                    <Item>
+                        <Header>Grading Breakdown</Header>
+                        <GradingPieChart breakdownData={data.grading.breakdown} />
+                    </Item>
+                </Grid>
+                <Grid size={4}>
+                    <Item>
+                        <Header>Important Events</Header>
+                        {data.important_events.map((item, index) => {
+                            return (
+                                <Grid size={4}>
+                                    <SubItem>
+                                        <Value>{item.name}</Value>
+                                        <Value>{item.date}</Value>
+                                    </SubItem>
+                                </Grid>
+                            )
+                        })}
+                    </Item>
+                </Grid>
                 <Grid size={6}>
                     <Item>
                         <Header>Contact Info</Header>
@@ -77,15 +117,6 @@ export const Analyzer = (props) => {
                             })}
                         </Grid>
                     </Item>
-                </Grid>
-                <Grid size={5}>
-                    <Item>
-                    <Header>Grading Breakdown</Header>
-                    <GradingPieChart breakdownData={data.grading.breakdown}/>
-                    </Item>
-                </Grid>
-                <Grid size={8}>
-                    <Item>size=8</Item>
                 </Grid>
             </Grid>
         </Box>
