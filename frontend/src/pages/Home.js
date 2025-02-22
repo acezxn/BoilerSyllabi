@@ -1,11 +1,12 @@
 import { Analyzer } from "./Analyzer";
 import { tempData } from "../static/temp";
+import { Typography } from "@mui/material";
 
 export const Home = () => {  
 
     return (
         <div>
-            <h1>Test</h1>
+            <Typography>Test</Typography>
             <Analyzer data={tempData}/>
         </div>
     )
