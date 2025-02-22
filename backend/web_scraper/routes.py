@@ -8,7 +8,6 @@ instruction = open("web_scraper/data/instruction.txt").read()
 
 
 def get_ratemyprof_info():
-    success_response = ({"message": "Success"}, 200)
     professor_not_found_response = ({"error": "Professor not found"}, 400)
 
     prof_name = request.form['professor']
