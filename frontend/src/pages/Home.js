@@ -1,8 +1,12 @@
-import Typography from '@mui/material/Typography';
+import { Analyzer } from "./Analyzer";
+import { tempData } from "../static/temp";
 
+export const Home = () => {  
 
-export const Home = () => {
-    return <>
-        <Typography color="primary">Hello</Typography>
-    </>
+    return (
+        <div>
+            <h1>Test</h1>
+            <Analyzer data={tempData}/>
+        </div>
+    )
 }

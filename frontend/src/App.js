@@ -6,6 +6,7 @@ import {
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from "./themes/theme";
 import { Home } from "./pages/Home";
+import { Analyzer } from './pages/Analyzer';
 import './App.css';
 
 
