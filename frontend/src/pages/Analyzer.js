@@ -77,9 +77,10 @@ export const Analyzer = (props) => {
                         </Grid>
                     </Item>
                 </Grid>
-                <Grid size={4}>
+                <Grid size={5}>
                     <Item>
                     <Header>Grading Breakdown</Header>
+                    <GradingPieChart breakdownData={data.grading.breakdown}/>
                     </Item>
                 </Grid>
                 <Grid size={8}>
