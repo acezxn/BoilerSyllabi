@@ -7,17 +7,19 @@ import re
 
 instruction = open("pdf_analyzer/data/instruction.txt").read()
 
+
 def analyze_pdf():
     file_not_provided_response = ({"error": "PDF file not provided"}, 400)
     file_invalid_response = ({"error": "Invalid file format"}, 400)
     empty_pdf_response = ({"error": "PDF file is empty"}, 400)
-    
+    success_response = ({"message": "Success"}, 200)
+
     file = request.files['file']
     pdf_string_data = ""
-    
+
     if 'file' not in request.files:
         return file_not_provided_response
-    
+
     try:
         reader = PdfReader(file)
         number_of_pages = len(reader.pages)
@@ -26,10 +28,10 @@ def analyze_pdf():
             pdf_string_data += page.extract_text()
     except Exception as e:
         return file_invalid_response
-    
+
     if len(pdf_string_data) == 0:
         return empty_pdf_response
-    
+
     prompt = instruction + pdf_string_data
     client = genai.Client(api_key=current_app.config["GEMINI_API_KEY"])
 
@@ -37,7 +39,7 @@ def analyze_pdf():
         model=current_app.config["GEMINI_MODEL"],
         contents=prompt
     )
-    
+
     response_text = re.sub(r'```(json)?', '', response.text)
-    
-    return ({ "message" : "Success", "data" : json.loads(response_text) }, 200)
+        
+    return ({**success_response[0], "data": json.loads(response_text)}, success_response[1])
