@@ -7,6 +7,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from "./themes/theme";
 import { Home } from "./pages/Home";
 import './App.css';
+import { Analyzer } from "./pages/Analyzer";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/analyzer" element={<Analyzer />}></Route>
         </Routes>
       </Router>
     </ThemeProvider>

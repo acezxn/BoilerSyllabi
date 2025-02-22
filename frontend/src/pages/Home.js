@@ -36,7 +36,6 @@ export const Home = () => {
         Upload PDF
       </Button>
       {selectedPdf && <p>Selected PDF: {selectedPdf.name}</p>}
-        <Analyzer />
     </div>
   );
 };
