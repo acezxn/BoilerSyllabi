@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { CssBaseline, Typography } from '@mui/material';
 import { cs307TempData } from '../static/temp';
+import GradingPieChart from '../components/GradingPieChart';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
