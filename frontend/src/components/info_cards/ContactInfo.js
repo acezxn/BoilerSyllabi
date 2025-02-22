@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react"
-import { cardStyle } from "../../themes/style/info_cards/info_card";
+import { cardStype } from "../../themes/style/info_cards/info_card";
 
 export const ContactInfo = ({ data }) => {
     const [contactList, setContactList] = useState([]);
@@ -10,7 +10,7 @@ export const ContactInfo = ({ data }) => {
     }, [data]);
 
     return (
-        <div style={cardStyle}>
+        <div style={cardStype}>
             <Typography variant="h5">Contact Info</Typography>
             <table style={{ width: "100%" }}>
                 <tr style={{ textAlign: "left" }}>

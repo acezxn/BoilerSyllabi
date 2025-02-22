@@ -1,11 +1,10 @@
 from flask import request
 from google import genai
-from flask import current_app
+import subprocess
 
 from web_scraper.scrapers.ratemyprof_scraper import *
 
 instruction = open("web_scraper/data/instruction.txt").read()
-
 
 def get_ratemyprof_info():
     professor_not_found_response = ({"error": "Professor not found"}, 400)
@@ -37,3 +36,26 @@ def get_ratemyprof_info():
     except Exception as e:
         print(e)
         return professor_not_found_response
+
+def get_boilergrade_info():
+    success_response = ({"message": "Success"}, 200)
+    information_not_found_response = ({"error": "information not found"}, 400)
+
+    firstname = request.form['firstname']
+    lastname = request.form['lastname']
+    classname = request.form['classname']
+
+    try:
+        gpa = subprocess.run(['python3', 'web_scraper/scrapers/boilergrade_scraper.py', firstname, lastname, classname], capture_output=True, text=True)
+        if (gpa.stdout == ""):
+            return information_not_found_response
+        
+        return {
+            "message": "Success",
+            "data": {
+                "gpa": float(gpa.stdout)
+            }
+        }
+    except Exception as e:
+        print(e)
+        return information_not_found_response

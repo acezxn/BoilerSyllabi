@@ -1,6 +1,6 @@
 import { theme } from "../../theme"
 
-export const cardStyle = {
+export const cardStype = {
     position: "relative",
     textAlign: "left",
     backgroundColor: theme.palette.background.paper,

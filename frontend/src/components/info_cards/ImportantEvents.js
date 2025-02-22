@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react"
-import { cardStyle } from "../../themes/style/info_cards/info_card";
+import { cardStype } from "../../themes/style/info_cards/info_card";
 
 export const ImportantEvents = ({ data }) => {
     const [importantEventsData, setImportantEventsData] = useState(null);
@@ -10,7 +10,7 @@ export const ImportantEvents = ({ data }) => {
     }, [data]);
 
     return (
-        <div style={cardStyle}>
+        <div style={cardStype}>
             {
                 importantEventsData ? (
                     <>
