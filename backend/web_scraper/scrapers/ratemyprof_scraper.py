@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-
 class RateMyProfScraper:
     difficulty_score_class_name = "CardNumRating__CardNumRatingNumber-sc-17t4b9u-2 cDKJcc"
     overall_rating_class_name = "RatingValue__Numerator-qw8sqy-2"

@@ -2,7 +2,7 @@ from flask import request
 from google import genai
 from flask import current_app
 
-from web_scraper.scrapers.ratemyprof import *
+from web_scraper.scrapers.ratemyprof_scraper import *
 
 instruction = open("web_scraper/data/instruction.txt").read()
 
