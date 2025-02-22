@@ -2,6 +2,7 @@ import { createTheme } from '@mui/material/styles';
 
 export const theme = createTheme({
     palette: {
+        mode: 'dark',
         primary: {
             main: "#8E6F3E", // Primary interface elements
             contrastText: "#FFFFFF",
@@ -28,7 +29,7 @@ export const theme = createTheme({
         },
         background: {
             default: "#18130b", // Background color
-            paper: "#18130b", // Paper surface color
+            paper: "#635239", // Paper surface color
         },
         text: {
             primary: "#f2eadc", // Primary text color

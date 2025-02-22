@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Box, Button, CssBaseline, Typography } from '@mui/material';
 import { MdOutlineDocumentScanner } from "react-icons/md";
 
+
 const bannerStyle = {
     position: "absolute",
     top: 0,
@@ -39,16 +40,17 @@ export const Home = () => {
                     <>
                         <img style={bannerStyle} src="assets/banner.gif" alt="Full Screen Banner" class="full-screen-banner" />
                         <Box sx={{ marginTop: 10 }}>
-                            <Typography variant="h3" sx={{ zIndex: 1 }}>Syllabus Analyzer</Typography>
+                            <Typography variant="h3" sx={{ zIndex: 1 }}>BoilerSyllabi</Typography>
                             <br />
-                            <MdOutlineDocumentScanner size={300} />
+                            {/* <MdOutlineDocumentScanner size={300} /> */}
+                            <img src='/assets/icon.svg' width={500}/>
                             <br />
                             <br />
                             <Button
                                 variant="contained"
                                 component="label"
                             >
-                                Select PDF to analyze
+                                Upload PDF Syllabus
                                 <input
                                     type="file"
                                     accept="application/pdf"
