@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react"
-import { cardStype } from "../../themes/style/info_cards/info_card";
+import { cardStyle } from "../../themes/style/info_cards/info_card";
 
 export const Schedule = ({ data }) => {
     const [scheduleData, setScheduleData] = useState(null);
@@ -10,7 +10,7 @@ export const Schedule = ({ data }) => {
     }, [data]);
 
     return (
-        <div style={cardStype}>
+        <div style={cardStyle}>
             {
                 scheduleData ? (
                     <>
