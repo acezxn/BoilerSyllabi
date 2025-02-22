@@ -1,13 +1,5 @@
-import Grid from '@mui/material/Grid2';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import StarBorder from '@mui/icons-material/StarBorder';
 import { CssBaseline, ListItemIcon, Typography } from '@mui/material';
 import { cs307TempData } from '../static/temp';
-import GradingPieChart from '../components/GradingPieChart';
 import { ContactInfo } from '../components/info_cards/ContactInfo';
 import { Overview } from '../components/info_cards/Overview';
 import { Schedule } from '../components/info_cards/Schedule';
