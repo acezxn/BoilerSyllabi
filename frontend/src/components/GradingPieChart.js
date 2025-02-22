@@ -1,9 +1,23 @@
-import React from 'react';
-import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
+import React, {useState, useEffect} from 'react';
+import { PieChart } from '@mui/x-charts/PieChart';
 import { useTheme } from '@mui/material/styles'; // To access theme in a component
 
-
 const GradingPieChart = (props) => {
+    const [pieChartData, setPieChartData] = useState([{id: 0, value: 100, label: ""}]);
+
+    useEffect(() => {
+        if (props.breakdownData) {
+            const newPieChartData = props.breakdownData.map((item, index) => {
+                return {
+                    label: item.name,
+                    value: item.weight,
+                    color: colors[index % colors.length]
+                }
+            });
+            setPieChartData(newPieChartData);
+        }
+    })
+
     const theme = useTheme(); // Access the theme object
     const colors = [
         theme.palette.primary.main,
@@ -12,38 +26,17 @@ const GradingPieChart = (props) => {
         theme.palette.secondary.contrastText
     ];
 
-    const {data} = props; // breakdown of grading categories
-    
-    const pieChartData = data.map((item, index) => {
-        return {
-            label: item.name,
-            value: item.weight,
-            color: colors[index % colors.length]
-        }
-    });
-    console.log(pieChartData);
-
-    const data1 = [
-        { label: 'Group A', value: 400 },
-        { label: 'Group B', value: 300 },
-        { label: 'Group C', value: 300 },
-        { label: 'Group D', value: 200 },
-        { label: 'Group E', value: 278 },
-        { label: 'Group F', value: 189 },
-      ];
-
-
     return (
         <PieChart
-  series={[
-    {
-      startAngle: -90,
-      endAngle: 90,
-      data1,
-    },
-  ]}
-  height={300}
-/>
+        series={[
+          {
+            data: pieChartData
+          },
+        ]}
+        width={600}
+        height={200}
+        skipAnimation={false}
+      />
     );
 };
 
