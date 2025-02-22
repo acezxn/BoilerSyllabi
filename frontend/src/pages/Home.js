@@ -1,5 +1,4 @@
 import { Analyzer } from "./Analyzer";
-import { tempData } from "../static/temp";
 import React, { useState } from 'react';
 import { Button } from '@mui/material';
 
@@ -37,6 +36,7 @@ export const Home = () => {
         Upload PDF
       </Button>
       {selectedPdf && <p>Selected PDF: {selectedPdf.name}</p>}
+        <Analyzer />
     </div>
   );
 };
