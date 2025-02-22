@@ -11,7 +11,6 @@ def analyze_pdf():
     file_not_provided_response = ({"error": "PDF file not provided"}, 400)
     file_invalid_response = ({"error": "Invalid file format"}, 400)
     empty_pdf_response = ({"error": "PDF file is empty"}, 400)
-    success_response = ({"message" : "Success"}, 200)
     
     file = request.files['file']
     pdf_string_data = ""
