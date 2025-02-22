@@ -1,7 +1,7 @@
 You are tasked with organizing a university course syllabus into the following JSON format:
 
 {
-  "overview": { "title": "", "course_id": "", "description": "", "learning_objectives": [""] },
+  "overview": { "title": "", "course_id": "", "professor": "", "description": "", "learning_objectives": [""] },
   "contact": [ {"name" : "", "role" : "", "contact": ""} ],
   "schedule": {
 	"lecture"	: [ {"date": "", "duration": 0} ],

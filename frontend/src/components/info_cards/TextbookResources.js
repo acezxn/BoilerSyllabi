@@ -2,28 +2,26 @@ import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react"
 import { cardStyle } from "../../themes/style/info_cards/info_card";
 
-export const ContactInfo = ({ data }) => {
-    const [contactList, setContactList] = useState([]);
+export const TextbookResources = ({ data }) => {
+    const [textbookResources, setTextbookResources] = useState([]);
 
     useEffect(() => {
-        setContactList(data);
+        setTextbookResources(data);
     }, [data]);
 
     return (
         <div style={cardStyle}>
-            <Typography variant="h5">Contact Info</Typography>
+            <Typography variant="h5">Textbooks</Typography>
             <table style={{ width: "100%" }}>
                 <tr style={{ textAlign: "left" }}>
                     <th>Name</th>
-                    <th>Role</th>
-                    <th>Contact</th>
+                    <th>Required</th>
                 </tr>
                 {
-                    contactList.map((item) => (
+                    textbookResources.map((item) => (
                         <tr>
                             <td>{item.name}</td>
-                            <td>{item.role}</td>
-                            <td>{item.contact}</td>
+                            <td>{item.required ? "✅" : "❌"}</td>
                         </tr>
                     ))
                 }

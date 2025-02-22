@@ -1,4 +1,5 @@
 from flask import request
+from flask import current_app
 from google import genai
 import subprocess
 
