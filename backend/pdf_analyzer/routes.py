@@ -1,9 +1,16 @@
 from PyPDF2 import PdfReader
 from flask import request
+from flask import current_app
+from google import genai
+import json
+import re
+
+instruction = open("pdf_analyzer/data/instruction.txt").read()
 
 def analyze_pdf():
     file_not_provided_response = ({"error": "PDF file not provided"}, 400)
     file_invalid_response = ({"error": "Invalid file format"}, 400)
+    empty_pdf_response = ({"error": "PDF file is empty"}, 400)
     success_response = ({"message" : "Success"}, 200)
     
     file = request.files['file']
@@ -21,6 +28,17 @@ def analyze_pdf():
     except Exception as e:
         return file_invalid_response
     
-    print(pdf_string_data)
+    if len(pdf_string_data) == 0:
+        return empty_pdf_response
     
-    return success_response
+    prompt = instruction + pdf_string_data
+    client = genai.Client(api_key=current_app.config["GEMINI_API_KEY"])
+
+    response = client.models.generate_content(
+        model=current_app.config["GEMINI_MODEL"],
+        contents=prompt
+    )
+    
+    response_text = re.sub(r'```(json)?', '', response.text)
+    
+    return ({ "message" : "Success", "data" : json.loads(response_text) }, 200)
