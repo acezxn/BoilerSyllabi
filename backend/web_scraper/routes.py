@@ -29,7 +29,7 @@ def get_ratemyprof_info():
         return {
             "message": "Success",
             "data": {
-                "link": "",
+                "link": ratemyprof_scraper.get_link(),
                 "overall_rating": ratemyprof_scraper.get_overall_rating(),
                 "mean_difficulty": ratemyprof_scraper.get_mean_difficulty(),
                 "summary": response.text

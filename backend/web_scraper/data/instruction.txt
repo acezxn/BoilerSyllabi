@@ -1,4 +1,4 @@
-You will be given a list of comments about a professor. Your task is to summarize these comments into a brief paragraph in an informal manner, as if you are a student sharing your opinion about the professor. Add emojis if appropriate. Combine the ideas from all the comments and phrase them in your own words.
+You will be given a list of comments about a professor. Your task is to summarize these comments into a brief paragraph in an informal manner, as if you are a student sharing your opinion about the professor. Add common social media emojis if appropriate. Combine the ideas from all the comments and phrase them in your own words.
 
 Please start your answer with something like "Professor [PROFESSOR_NAME] is a ..."
 

@@ -8,6 +8,7 @@ class RateMyProfScraper:
 
     def __init__(self):
         self.url = ""
+        self.link = ""
         self.overall_rating = 0
         self.mean_difficulty = 0
         self.comments = []
@@ -21,7 +22,10 @@ class RateMyProfScraper:
     def get_comments(self):
         return self.comments
 
-    def get_ratemyprof_link(self, professor_name):
+    def get_link(self):
+        return self.url
+
+    def scrape_professor(self, professor_name):
         r = requests.get('https://www.ratemyprofessors.com/search/professors/783?q=' +
                          professor_name.replace(' ', '%20'))
 
@@ -29,16 +33,9 @@ class RateMyProfScraper:
         link = soup.find(
             "a", class_="TeacherCard__StyledTeacherCard-syjs0d-0 dLJIlx")
 
-        self.url = 'https://www.ratemyprofessors.com/' + link['href']
-
-    def get_ratemyprof_page(self):
+        self.url = 'https://www.ratemyprofessors.com' + link['href']
         r = requests.get(self.url)
         soup = BeautifulSoup(r.content, 'html.parser')
-        return soup
-
-    def scrape_professor(self, professor_name):
-        self.get_ratemyprof_link(professor_name)
-        soup = self.get_ratemyprof_page()
 
         difficulty_scores_objects = soup.find_all(
             "div", class_=RateMyProfScraper.difficulty_score_class_name)
