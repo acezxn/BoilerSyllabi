@@ -2,9 +2,8 @@ import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import { Typography } from '@mui/material';
+import { CssBaseline, Typography } from '@mui/material';
 import { cs307TempData } from '../static/temp';
-import GradingPieChart from '../components/GradingPieChart';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
@@ -36,6 +35,7 @@ export const Analyzer = (props) => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
+            <CssBaseline />
             <Grid container spacing={2}>
                 <Grid size={6}>
                     <Item>
