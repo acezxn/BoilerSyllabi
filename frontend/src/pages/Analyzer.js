@@ -5,89 +5,90 @@ import { styled } from '@mui/material/styles';
 import { CssBaseline, Typography } from '@mui/material';
 import { cs307TempData } from '../static/temp';
 import GradingPieChart from '../components/GradingPieChart';
+import { ContactInfo } from '../components/info_cards/ContactInfo';
+import { Overview } from '../components/info_cards/Overview';
+import { Schedule } from '../components/info_cards/Schedule';
+import { ImportantEvents } from '../components/info_cards/ImportantEvents';
+import { Grading } from '../components/info_cards/Grading';
+import { useEffect, useState } from 'react';
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.primary.main,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
-
-const SubItem = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.secondary.main,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
-
-const Header = styled(Typography)(({ theme }) => ({
-    ...theme.typography.h4,
-    color: theme.palette.secondary.contrastText,
-}));
-
-const Value = styled(Typography)(({ theme }) => ({
-    ...theme.typography.body1,
-    color: theme.palette.primary.contrastText,
-}));
+const dashboardStyle = {
+    margin: 10,
+    marginBottom: 0,
+    display: "grid",
+    width: "calc(100vw - 20px)",
+    gap: 10,
+    gridTemplateColumns: "auto auto auto"
+}
 
 export const Analyzer = (props) => {
-    //const { data } = props;
+    const [width, setWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const updateWidth = () => {
+            setWidth(window.innerWidth);
+        }
+        window.addEventListener("resize", updateWidth);
+        return () => window.removeEventListener("resize", updateWidth);
+    }, []);
+
+    useEffect(() => {
+        console.log(width);
+    }, [width])
+
     const data = cs307TempData.data;
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <>
             <CssBaseline />
-            <Grid container spacing={2}>
-                <Grid size={6}>
-                    <Item>
-                        <Header>Contact Info</Header>
-                        <Grid container spacing={2}>
-                            {data.contact.map((item, index) => {
-                                return (
-                                    <Grid size={4}>
-                                        <SubItem>
-                                            <Value>{item.name}</Value>
-                                            <Value>{item.role}</Value>
-                                            <Value>{item.contact}</Value>
-                                        </SubItem>
-                                    </Grid>
-                                );
-                            })}
-                        </Grid>
-                    </Item>
-                </Grid>
-                <Grid size={6}>
-                    <Item>
-                        <Header>Graded Items</Header>
-                        <Grid container spacing={2}>
-                            {data.graded_items.map((item, index) => {
-                                return (
-                                    <Grid size={6}>
-                                        <SubItem>
-                                            <Value>{item.title}</Value>
-                                            {item.important_info.map((arr_item, index) => {
-                                                return (
-                                                    <Value>{arr_item.info}</Value>
-                                                )
-                                            })}
-                                            <Value>Summary: {item.summary}</Value>
-                                        </SubItem>
-                                    </Grid>
-                                );
-                            })}
-                        </Grid>
-                    </Item>
-                </Grid>
-                <Grid size={5}>
-                    <Item>
-                    <Header>Grading Breakdown</Header>
-                    <GradingPieChart breakdownData={data.grading.breakdown}/>
-                    </Item>
-                </Grid>
-                <Grid size={8}>
-                    <Item>size=8</Item>
-                </Grid>
-            </Grid>
-        </Box>
+            <div style={dashboardStyle}>
+                {
+                    width > 1200 ? (
+                        <>
+                            <div style={{ minWidth: "calc(100vw / 3 - 20)" }}>
+                                <ContactInfo data={data.contact} />
+                                <Overview data={data.overview} />
+                            </div>
+                            <div style={{ minWidth: "calc(100vw / 3 - 20)" }}>
+                                <Schedule data={data.schedule} />
+                                <Grading data={data.grading} />
+                            </div>
+                            <div style={{ minWidth: "calc(100vw / 3 - 20)" }}>
+                                <ImportantEvents data={data.important_events} />
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            {
+                                width > 800 ? (
+                                    <>
+                                        <div style={{ minWidth: "calc(100vw / 2 - 20)" }}>
+                                            <ContactInfo data={data.contact} />
+                                            <Overview data={data.overview} />
+                                            <Schedule data={data.schedule} />
+                                        </div>
+                                        <div style={{ minWidth: "calc(100vw / 2 - 20)" }}>
+                                            <ImportantEvents data={data.important_events} />
+                                            <Grading data={data.grading} />
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div style={{ minWidth: "calc(100vw - 20)" }}>
+                                            <ContactInfo data={data.contact} />
+                                            <Overview data={data.overview} />
+                                            <Schedule data={data.schedule} />
+                                            <ImportantEvents data={data.important_events} />
+                                            <Grading data={data.grading} />
+                                        </div>
+                                    </>
+                                )
+                            }
+
+                        </>
+                    )
+                }
+            </div>
+        </>
     )
 }
