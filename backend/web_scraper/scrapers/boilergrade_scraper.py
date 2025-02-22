@@ -25,8 +25,25 @@ async def scraper(firstname, lastname, classname):
         if (class_name.find(classname)):
             gpa_block = await row.querySelector('div[class="d-flex justify-end col-md-1 col-1"]')
             gpa = await page.evaluate('(element) => element.textContent', gpa_block)
+            print(gpa.replace(" ", ""))
+            
+            chart_block = await row.querySelector('div[class="col-sm-8 col-md-7 col-7"]')
+            await chart_block.hover()
+
+            await page.waitForSelector('div[class="v-data-table__wrapper"]')
+            table = await page.querySelector('div[class="v-data-table__wrapper"] table')
+
+            print(len(await table.querySelectorAll('th[class="text-center"]')))
+
+            for grade in await table.querySelectorAll('th[class="text-center"]'):
+                tmp = await page.evaluate('(element) => element.textContent', grade)
+                print(tmp.replace(' ', ''))
+
+            for percentage in await table.querySelectorAll('td[class="text-center"]'):
+                tmp = await page.evaluate('(element) => element.textContent', percentage)   
+                print(tmp.replace(' ', '').replace('%', ''))
+            
             await browser.close()
-            print(gpa)
             return 0
 
     await browser.close()
