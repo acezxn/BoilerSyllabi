@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { Typography } from '@mui/material';
-import Divider from '@mui/material/Divider';
 import { cs307TempData } from '../static/temp';
+import GradingPieChart from '../components/GradingPieChart';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
@@ -13,9 +13,16 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
+const SubItem = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.secondary.main,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+}));
+
 const Header = styled(Typography)(({ theme }) => ({
     ...theme.typography.h4,
-    color: theme.palette.secondary.main,
+    color: theme.palette.secondary.contrastText,
 }));
 
 const Value = styled(Typography)(({ theme }) => ({
@@ -30,37 +37,50 @@ export const Analyzer = (props) => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
-                <Grid size={8}>
+                <Grid size={6}>
                     <Item>
                         <Header>Contact Info</Header>
-                        {data.contact.map((item, index) => {
-                            return (
-                                <Box>
-                                    <Value>{item.contact}</Value>
-                                    <Value>{item.name}</Value>
-                                    <Value>{item.role}</Value>
-                                </Box>
-                            );
-                        })}
+                        <Grid container spacing={2}>
+                            {data.contact.map((item, index) => {
+                                return (
+                                    <Grid size={4}>
+                                        <SubItem>
+                                            <Value>{item.name}</Value>
+                                            <Value>{item.role}</Value>
+                                            <Value>{item.contact}</Value>
+                                        </SubItem>
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
+                    </Item>
+                </Grid>
+                <Grid size={6}>
+                    <Item>
+                        <Header>Graded Items</Header>
+                        <Grid container spacing={2}>
+                            {data.graded_items.map((item, index) => {
+                                return (
+                                    <Grid size={6}>
+                                        <SubItem>
+                                            <Value>{item.title}</Value>
+                                            {item.important_info.map((arr_item, index) => {
+                                                return (
+                                                    <Value>{arr_item.info}</Value>
+                                                )
+                                            })}
+                                            <Value>Summary: {item.summary}</Value>
+                                        </SubItem>
+                                    </Grid>
+                                );
+                            })}
+                        </Grid>
                     </Item>
                 </Grid>
                 <Grid size={4}>
                     <Item>
-                    <Header>Graded Items</Header>
-                        {data.graded_items.map((item, index) => {
-                            return (
-                                <Box>
-                                    <Value>{item.important_info[0].info}</Value>
-                                    <Value>{item.summary}</Value>
-                                    <Value>{item.title}</Value>
-                                    <Divider orientation="horizontal" flexItem />
-                                </Box>
-                            );
-                        })}
+                    <Header>Grading Breakdown</Header>
                     </Item>
-                </Grid>
-                <Grid size={4}>
-                    <Item>size=4</Item>
                 </Grid>
                 <Grid size={8}>
                     <Item>size=8</Item>
