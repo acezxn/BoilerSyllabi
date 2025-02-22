@@ -27,11 +27,11 @@ export const theme = createTheme({
             contrastText: "#FFFFFF",
         },
         background: {
-            default: "#FFF8F3", // Background color
-            paper: "#FFF8F3", // Paper surface color
+            default: "#18130b", // Background color
+            paper: "#18130b", // Paper surface color
         },
         text: {
-            primary: "#201B13", // Primary text color
+            primary: "#f2eadc", // Primary text color
         },
     },
 });
