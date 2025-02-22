@@ -10,6 +10,7 @@ import { Policies } from '../components/info_cards/Policies';
 import { TextbookResources } from '../components/info_cards/TextbookResources';
 import ClockLoader from "react-spinners/ClockLoader";
 import { theme } from '../themes/theme';
+import { RateMyProfessor } from '../components/info_cards/RateMyProfessor';
 
 const dashboardStyle = {
     margin: 10,
@@ -22,11 +23,13 @@ const dashboardStyle = {
 
 export const Analyzer = ({ file }) => {
     const [width, setWidth] = useState(window.innerWidth);
+    const [professor, setProfessor] = useState("");
     const [selectedPdf, setSelectedPdf] = useState(null);
     const [pdfAnalysisData, setPdfAnalysisData] = useState(null);
     const [profAnalysisData, setProfAnalysisData] = useState(null);
 
     const analyzeFile = async () => {
+        console.log("Analyzing PDF")
         let requestData = new FormData();
         requestData.append('file', selectedPdf);
         const response = await fetch(
@@ -39,10 +42,23 @@ export const Analyzer = ({ file }) => {
         );
         const jsonResponse = await response.json();
         setPdfAnalysisData(jsonResponse.data);
+        setProfessor(jsonResponse.data.overview.professor);
     }
 
-    const analyzeProfessor = () => {
-        // TODO: send request to backend to analyze professor
+    const analyzeProfessor = async () => {
+        console.log("Analyzing Professor")
+        let requestData = new FormData();
+        requestData.append('professor', professor);
+        const response = await fetch(
+            process.env.REACT_APP_BACKEND_URL + "/get_ratemyprof_info",
+            {
+                method: "POST",
+                body: requestData,
+                signal: AbortSignal.timeout(60000)
+            }
+        );
+        const jsonResponse = await response.json();
+        setProfAnalysisData(jsonResponse.data);
     }
 
     useEffect(() => {
@@ -52,6 +68,12 @@ export const Analyzer = ({ file }) => {
         window.addEventListener("resize", updateWidth);
         return () => window.removeEventListener("resize", updateWidth);
     }, []);
+
+    useEffect(() => {
+        if (professor !== "") {
+            analyzeProfessor();
+        }
+    }, [professor]);
 
     useEffect(() => {
         if (selectedPdf) {
@@ -69,7 +91,7 @@ export const Analyzer = ({ file }) => {
         <>
             <CssBaseline />
             {
-                pdfAnalysisData ? (
+                (pdfAnalysisData && profAnalysisData) ? (
                     <div style={dashboardStyle}>
                         {
                             width > 1200 ? (
@@ -85,6 +107,7 @@ export const Analyzer = ({ file }) => {
                                         <TextbookResources data={pdfAnalysisData.textbook_resources} />
                                     </div>
                                     <div style={{ minWidth: "calc(100vw / 3 - 20)" }}>
+                                        <RateMyProfessor data={profAnalysisData} />
                                         <Grading data={pdfAnalysisData.grading} />
                                         <GradedItems data={pdfAnalysisData.graded_items} />
                                     </div>

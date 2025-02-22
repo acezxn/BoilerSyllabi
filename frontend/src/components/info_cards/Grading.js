@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react"
-import { cardStype } from "../../themes/style/info_cards/info_card";
+import { cardStyle } from "../../themes/style/info_cards/info_card";
 import GradingPieChart from "../GradingPieChart";
 
 export const Grading = ({ data }) => {
@@ -11,7 +11,7 @@ export const Grading = ({ data }) => {
     }, [data]);
 
     return (
-        <div style={cardStype}>
+        <div style={cardStyle}>
             {
                 grading ? (
                     <>

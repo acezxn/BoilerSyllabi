@@ -34,7 +34,7 @@ export const Home = () => {
             <CssBaseline />
             {
                 selectedPdf ? (
-                    <Analyzer />
+                    <Analyzer file={selectedPdf}/>
                 ) : (
                     <>
                         <img style={bannerStyle} src="assets/banner.gif" alt="Full Screen Banner" class="full-screen-banner" />
