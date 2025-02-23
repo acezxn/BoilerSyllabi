@@ -28,12 +28,23 @@ export const Policies = ({ data }) => {
                                                 <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Summary:</Typography>
                                                 <Typography sx={{ display: "inline-block" }}>{policy.summary}</Typography>
                                                 <br />
-                                                <Typography sx={{ fontWeight: "bold" }}>Important Info:</Typography>
                                                 {
-                                                    policy.important_info.map((item, index) => {
-                                                        return <Typography key={index}>- {item.info}</Typography>
-                                                    })
+                                                    policy.important_info.length > 0 && (
+                                                        <>
+                                                            <Typography sx={{ fontWeight: "bold" }}>Important Info:</Typography>
+                                                            <ul>
+
+                                                                {
+                                                                    policy.important_info.map((item, index) => {
+                                                                        return <li><Typography key={index}>{item.info}</Typography></li>
+                                                                    })
+                                                                }
+
+                                                            </ul>
+                                                        </>
+                                                    )
                                                 }
+
                                                 <br />
                                             </div>
                                         ))

@@ -27,11 +27,15 @@ export const Overview = ({ data }) => {
                         <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Description:</Typography>
                         <Typography sx={{ display: "inline-block" }}>{overviewData.description}</Typography>
                         <Typography sx={{ fontWeight: "bold" }}>Learning Objectives:</Typography>
-                        {
-                            overviewData.learning_objectives.map((objective, index) => {
-                                return <Typography key={index}>- {objective}</Typography>
-                            })
-                        }
+                        <ul>
+
+                            {
+                                overviewData.learning_objectives.map((objective, index) => {
+                                    return <li><Typography key={index}>{objective}</Typography></li>
+                                })
+                            }
+
+                        </ul>
                         <br />
                     </>
                 ) : (

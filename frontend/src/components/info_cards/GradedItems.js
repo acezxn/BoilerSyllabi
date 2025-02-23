@@ -29,12 +29,17 @@ export const GradedItems = ({ data }) => {
                                                 <Typography sx={{ display: "inline-block" }}>{gradedItem.summary}</Typography>
                                                 <br />
                                                 <Typography sx={{ fontWeight: "bold" }}>Important Info:</Typography>
-                                                {
-                                                    gradedItem.important_info.map((item, index) => {
-                                                        return <Typography key={index}>- {item.info}</Typography>
-                                                    })
-                                                }
+                                                <ul>
+
+                                                    {
+                                                        gradedItem.important_info.map((item, index) => {
+                                                            return <li><Typography key={index}>{item.info}</Typography></li>
+                                                        })
+                                                    }
+
+                                                </ul>
                                                 <br />
+
                                             </div>
                                         ))
                                     }

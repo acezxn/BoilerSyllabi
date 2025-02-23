@@ -24,6 +24,8 @@ export const RateMyProfessor = ({ data }) => {
                         <br />
                         <Typography sx={{ fontWeight: "bold" }}>Feedback:</Typography>
                         <Typography sx={{ display: "inline-block" }}>{rateMyProfessorData.summary}</Typography>
+                        <br />
+                        <br />
                         <Typography sx={{ fontWeight: "bold" }}>Reference:</Typography>
                         <Link sx={{ display: "inline-block", color: theme.palette.secondary.main }} href={rateMyProfessorData.link}>{rateMyProfessorData.link}</Link>
                         <br />
