@@ -10,7 +10,7 @@ import os
 
 # create flask app
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://boilermake-xii.vercel.app/"])
 
 # set up environment variables
 app.config["GEMINI_API_KEY"] = os.environ.get("GEMINI_API_KEY")
