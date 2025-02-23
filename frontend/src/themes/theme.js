@@ -4,11 +4,11 @@ export const theme = createTheme({
     palette: {
         mode: 'dark',
         primary: {
-            main: "#edb966", // Primary interface elements
+            main: "#8E6F3E", // Primary interface elements
             contrastText: "#FFFFFF",
         },
         secondary: {
-            main: "#edb966", // Secondary interface elements
+            main: "#6E5B40", // Secondary interface elements
             contrastText: "#FFFFFF",
         },
         error: {
