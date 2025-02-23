@@ -1,7 +1,10 @@
 import { Analyzer } from "./Analyzer";
 import React, { useState } from 'react';
 import { Box, Button, CssBaseline, Typography } from '@mui/material';
+<<<<<<< HEAD
 import { MdOutlineDocumentScanner } from "react-icons/md";
+=======
+>>>>>>> 1d7c7b41b958db427e383a68639f4803b20a27ff
 
 
 const bannerStyle = {
@@ -30,6 +33,7 @@ export const Home = () => {
     };
 
     return (
+<<<<<<< HEAD
         <div style={{ textAlign: 'center' }}>
             <CssBaseline />
             {
@@ -57,6 +61,38 @@ export const Home = () => {
                                     hidden
                                 />
                             </Button>
+=======
+        <div>
+            <CssBaseline />
+            {
+                selectedPdf ? (
+                    <Analyzer file={selectedPdf} />
+                ) : (
+                    <>
+                        <img style={bannerStyle} src="assets/banner.gif" alt="Full Screen Banner" class="full-screen-banner" />
+                        <Box sx={{ margin: 2, marginTop: 10 }}>
+                            <Typography variant="h3" sx={{ zIndex: 1, textAlign: "center" }}>BoilerSyllabi</Typography>
+                            <div style={{ display: "flex", alignItems: "center" }}>
+                                <img src='/assets/icon.svg' width={500} />
+                                <div>
+                                    <Typography>An AI-powered platform designed to help you take control of your academic journey by simplifying your course syllabi. Say goodbye to scrolling through lengthy syllabi and hello to a more organized, stress-free way of managing your courses. Start exploring and streamline your semester with ease!</Typography>
+                                    <br />
+                                    <Button
+                                        variant="contained"
+                                        component="label"
+                                    >
+                                        Upload PDF Syllabus
+                                        <input
+                                            type="file"
+                                            accept="application/pdf"
+                                            onChange={handleFileChange}
+                                            hidden
+                                        />
+                                    </Button>
+                                </div>
+                            </div>
+
+>>>>>>> 1d7c7b41b958db427e383a68639f4803b20a27ff
                         </Box>
                     </>
                 )

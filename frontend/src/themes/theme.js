@@ -8,7 +8,7 @@ export const theme = createTheme({
             contrastText: "#FFFFFF",
         },
         secondary: {
-            main: "#6E5B40", // Secondary interface elements
+            main: "#edb966", // Secondary interface elements
             contrastText: "#FFFFFF",
         },
         error: {
