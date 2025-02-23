@@ -46,7 +46,7 @@ export const theme = createTheme({
             "scrollMarginTop": "calc(var(--MuiDocs-header-height) + 32px)"
         },
         "button": {
-            "fontFamily": "\"IBM Plex Sans\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\"",
+            "fontFamily": "\"Roboto Mono\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\"",
         },
         "body1": {
             "fontFamily": "\"Roboto Mono\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\"",
@@ -57,7 +57,7 @@ export const theme = createTheme({
             "lineHeight": 1.5,
             "letterSpacing": 0,
             "fontWeight": 700,
-            "fontFamily": "\"IBM Plex Sans\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\"",
+            "fontFamily": "\"Roboto Mono\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\"",
             "scrollMarginTop": "calc(var(--MuiDocs-header-height) + 32px)"
         },
     }

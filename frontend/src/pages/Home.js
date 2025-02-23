@@ -37,8 +37,8 @@ export const Home = () => {
                 ) : (
                     <>
                         <img style={bannerStyle} src="assets/banner.gif" alt="Full Screen Banner" class="full-screen-banner" />
-                        <Box sx={{ margin: 2, marginTop: 10 }}>
-                            <Typography variant="h3" sx={{ zIndex: 1, textAlign: "center" }}>BoilerSyllabi</Typography>
+                        <Box sx={{ margin: 2, marginTop: "20vh" }}>
+                            <Typography variant="h2" sx={{ zIndex: 1, textAlign: "center" }}>BoilerSyllabi</Typography>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <img src='/assets/icon.svg' width={500} />
                                 <div>
