@@ -37,39 +37,3 @@ def get_ratemyprof_info():
     except Exception as e:
         print(e)
         return professor_not_found_response
-
-def get_boilergrade_info():
-    success_response = ({"message": "Success"}, 200)
-    information_not_found_response = ({"error": "information not found"}, 400)
-
-    firstname = request.form['firstname']
-    lastname = request.form['lastname']
-    classname = request.form['classname']
-
-    try:
-        results = subprocess.run(['python3', 'web_scraper/scrapers/boilergrade_scraper.py', firstname, lastname, classname], capture_output=True, text=True).stdout
-        
-        if (results == ""):
-            return information_not_found_response
-
-        list_of_results = results.split("\n")
-        gpa = float(list_of_results[0])
-        n = int(list_of_results[1])
-        grades = []
-        percentages = []
-
-        for i in range(n):
-            grades.append(list_of_results[2 + i])
-            percentages.append(float(list_of_results[2 + i + n]))
-
-        return {
-            "message": "Success",
-            "data": {
-                "gpa": gpa,
-                "grades": grades,
-                "percentages": percentages
-            }
-        }
-    except Exception as e:
-        print(e)
-        return information_not_found_response

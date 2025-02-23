@@ -37,7 +37,7 @@ export const Analyzer = ({ file }) => {
             {
                 method: "POST",
                 body: requestData,
-                signal: AbortSignal.timeout(60000)
+                signal: AbortSignal.timeout(600000)
             }
         );
         const jsonResponse = await response.json();
@@ -54,7 +54,7 @@ export const Analyzer = ({ file }) => {
             {
                 method: "POST",
                 body: requestData,
-                signal: AbortSignal.timeout(60000)
+                signal: AbortSignal.timeout(600000)
             }
         );
         const jsonResponse = await response.json();
