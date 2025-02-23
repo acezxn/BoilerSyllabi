@@ -1,6 +1,6 @@
-import { Analyzer } from "./Analyzer";
 import React, { useState } from 'react';
 import { Box, Button, CssBaseline, Typography } from '@mui/material';
+import { Analyzer } from '../components/Analyzer';
 
 
 const bannerStyle = {

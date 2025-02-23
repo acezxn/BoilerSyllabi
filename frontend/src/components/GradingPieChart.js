@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useTheme } from '@mui/material/styles'; // To access theme in a component
+import { red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, grey, blueGrey } from '@mui/material/colors';
 
 const options = {
     responsive: true,
@@ -22,9 +23,7 @@ const GradingPieChart = (props) => {
 
     useEffect(() => {
         const colors = [
-            theme.palette.primary.contrastText,
-            theme.palette.secondary.main,
-            theme.palette.primary.main,
+            "#f5eccb", "#c1ad84", "#a08d5f", "#decda9"
         ];
         if (props.breakdownData) {
             const newPieChartData = props.breakdownData.map((item, index) => {

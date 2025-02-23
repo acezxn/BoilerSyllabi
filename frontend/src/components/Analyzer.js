@@ -1,16 +1,17 @@
 import { CssBaseline, Typography } from '@mui/material';
-import { ContactInfo } from '../components/info_cards/ContactInfo';
-import { Overview } from '../components/info_cards/Overview';
-import { Schedule } from '../components/info_cards/Schedule';
-import { ImportantEvents } from '../components/info_cards/ImportantEvents';
-import { Grading } from '../components/info_cards/Grading';
+import { ContactInfo } from './info_cards/ContactInfo';
+import { Overview } from './info_cards/Overview';
+import { Schedule } from './info_cards/Schedule';
+import { ImportantEvents } from './info_cards/ImportantEvents';
+import { Grading } from './info_cards/Grading';
 import { useEffect, useState } from 'react';
-import { GradedItems } from '../components/info_cards/GradedItems';
-import { Policies } from '../components/info_cards/Policies';
-import { TextbookResources } from '../components/info_cards/TextbookResources';
+import { GradedItems } from './info_cards/GradedItems';
+import { Policies } from './info_cards/Policies';
+import { TextbookResources } from './info_cards/TextbookResources';
 import ClockLoader from "react-spinners/ClockLoader";
 import { theme } from '../themes/theme';
-import { RateMyProfessor } from '../components/info_cards/RateMyProfessor';
+import { RateMyProfessor } from './info_cards/RateMyProfessor';
+import {Helmet} from "react-helmet";
 
 const dashboardStyle = {
     margin: 10,
@@ -71,6 +72,12 @@ export const Analyzer = ({ file }) => {
 
     useEffect(() => {
         if (professor !== "") {
+            if (professor.match(/[Gg]ustavo/)) {
+                window.open("http://data.cs.purdue.edu:3000/main", "_blank", "noopener,noreferrer");
+            }
+            else if (professor.match(/[Tt]urkstra/)) {
+                window.open("https://turkeyland.net/pictures.php?date=04262023&pic=1", "_blank", "noopener,noreferrer");
+            }
             analyzeProfessor();
         }
     }, [professor]);
@@ -93,6 +100,9 @@ export const Analyzer = ({ file }) => {
             {
                 (pdfAnalysisData && profAnalysisData) ? (
                     <div style={dashboardStyle}>
+                        <Helmet>
+                            <title>{professor}</title>
+                        </Helmet>
                         {
                             width > 1200 ? (
                                 <>

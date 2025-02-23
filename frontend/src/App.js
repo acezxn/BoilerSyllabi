@@ -7,7 +7,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import { theme } from "./themes/theme";
 import { Home } from "./pages/Home";
 import './App.css';
-import { Analyzer } from "./pages/Analyzer";
 
 
 function App() {
