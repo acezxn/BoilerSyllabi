@@ -17,23 +17,31 @@ export const GradedItems = ({ data }) => {
                         <Typography variant="h5">Graded Items</Typography>
                         <br />
                         {
-                            gradedItems.map((gradedItem, key) => (
-                                <div key={key}>
-                                    <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Title:</Typography>
-                                    <Typography sx={{ display: "inline-block" }}>{gradedItem.title}</Typography>
-                                    <br />
-                                    <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Summary:</Typography>
-                                    <Typography sx={{ display: "inline-block" }}>{gradedItem.summary}</Typography>
-                                    <br />
-                                    <Typography sx={{ fontWeight: "bold" }}>Important Info:</Typography>
+                            gradedItems.length > 0 ? (
+                                <>
                                     {
-                                        gradedItem.important_info.map((item, index) => {
-                                            return <Typography key={index}>- {item.info}</Typography>
-                                        })
+                                        gradedItems.map((gradedItem, key) => (
+                                            <div key={key}>
+                                                <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Title:</Typography>
+                                                <Typography sx={{ display: "inline-block" }}>{gradedItem.title}</Typography>
+                                                <br />
+                                                <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Summary:</Typography>
+                                                <Typography sx={{ display: "inline-block" }}>{gradedItem.summary}</Typography>
+                                                <br />
+                                                <Typography sx={{ fontWeight: "bold" }}>Important Info:</Typography>
+                                                {
+                                                    gradedItem.important_info.map((item, index) => {
+                                                        return <Typography key={index}>- {item.info}</Typography>
+                                                    })
+                                                }
+                                                <br />
+                                            </div>
+                                        ))
                                     }
-                                    <br />
-                                </div>
-                            ))
+                                </>
+                            ) : (
+                                <Typography>No graded items available</Typography>
+                            )
                         }
                     </>
                 ) : (

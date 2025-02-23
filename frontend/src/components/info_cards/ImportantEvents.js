@@ -15,24 +15,29 @@ export const ImportantEvents = ({ data }) => {
                 importantEventsData ? (
                     <>
                         <Typography variant="h5">Important Events</Typography>
-                        <table style={{ width: "100%" }}>
-                            <tr style={{ textAlign: "left" }}>
-                                <th>Event Name</th>
-                                <th>Event Date (hrs)</th>
-                            </tr>
-                            {
-                                importantEventsData.map((event, key) => {
+                        {
+                            importantEventsData.length > 0 ? (
+                                <table style={{ width: "100%" }}>
+                                    <tr style={{ textAlign: "left" }}>
+                                        <th>Event Name</th>
+                                        <th>Event Date (hrs)</th>
+                                    </tr>
+                                    {
+                                        importantEventsData.map((event, key) => {
 
-                                    return (
-                                        <tr key={key}>
-                                            <td>{event.name}</td>
-                                            <td>{event.date}</td>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </table>
-                        <br />
+                                            return (
+                                                <tr key={key}>
+                                                    <td>{event.name}</td>
+                                                    <td>{event.date}</td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </table>
+                            ) : (
+                                <Typography>No important events available</Typography>
+                            )
+                        }
                     </>
                 ) : (
                     <Typography>Loading</Typography>

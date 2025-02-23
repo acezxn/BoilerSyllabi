@@ -17,23 +17,31 @@ export const Policies = ({ data }) => {
                         <Typography variant="h5">Policies</Typography>
                         <br />
                         {
-                            policies.map((policy, key) => (
-                                <div key={key}>
-                                    <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Title:</Typography>
-                                    <Typography sx={{ display: "inline-block" }}>{policy.title}</Typography>
-                                    <br />
-                                    <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Summary:</Typography>
-                                    <Typography sx={{ display: "inline-block" }}>{policy.summary}</Typography>
-                                    <br />
-                                    <Typography sx={{ fontWeight: "bold" }}>Important Info:</Typography>
+                            policies.length > 0 ? (
+                                <>
                                     {
-                                        policy.important_info.map((item, index) => {
-                                            return <Typography key={index}>- {item.info}</Typography>
-                                        })
+                                        policies.map((policy, key) => (
+                                            <div key={key}>
+                                                <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Title:</Typography>
+                                                <Typography sx={{ display: "inline-block" }}>{policy.title}</Typography>
+                                                <br />
+                                                <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Summary:</Typography>
+                                                <Typography sx={{ display: "inline-block" }}>{policy.summary}</Typography>
+                                                <br />
+                                                <Typography sx={{ fontWeight: "bold" }}>Important Info:</Typography>
+                                                {
+                                                    policy.important_info.map((item, index) => {
+                                                        return <Typography key={index}>- {item.info}</Typography>
+                                                    })
+                                                }
+                                                <br />
+                                            </div>
+                                        ))
                                     }
-                                    <br />
-                                </div>
-                            ))
+                                </>
+                            ) : (
+                                <Typography>No policy information available</Typography>
+                            )
                         }
                     </>
                 ) : (

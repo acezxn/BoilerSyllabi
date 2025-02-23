@@ -12,7 +12,9 @@ export const TextbookResources = ({ data }) => {
     return (
         <div style={cardStyle}>
             <Typography variant="h5">Textbooks</Typography>
-            <table style={{ width: "100%" }}>
+            {
+                textbookResources.length > 0 ? (
+                    <table style={{ width: "100%" }}>
                 <tr style={{ textAlign: "left" }}>
                     <th>Name</th>
                     <th>Required</th>
@@ -26,6 +28,11 @@ export const TextbookResources = ({ data }) => {
                     ))
                 }
             </table>
+                ) : (
+                    <Typography>No textbook information available</Typography>
+                )
+            }
+            
         </div>
     )
 }
