@@ -47,14 +47,27 @@ def get_boilergrade_info():
     classname = request.form['classname']
 
     try:
-        gpa = subprocess.run(['python3', 'web_scraper/scrapers/boilergrade_scraper.py', firstname, lastname, classname], capture_output=True, text=True)
-        if (gpa.stdout == ""):
-            return information_not_found_response
+        results = subprocess.run(['python3', 'web_scraper/scrapers/boilergrade_scraper.py', firstname, lastname, classname], capture_output=True, text=True).stdout
         
+        if (results == ""):
+            return information_not_found_response
+
+        list_of_results = results.split("\n")
+        gpa = float(list_of_results[0])
+        n = int(list_of_results[1])
+        grades = []
+        percentages = []
+
+        for i in range(n):
+            grades.append(list_of_results[2 + i])
+            percentages.append(float(list_of_results[2 + i + n]))
+
         return {
             "message": "Success",
             "data": {
-                "gpa": float(gpa.stdout)
+                "gpa": gpa,
+                "grades": grades,
+                "percentages": percentages
             }
         }
     except Exception as e:
