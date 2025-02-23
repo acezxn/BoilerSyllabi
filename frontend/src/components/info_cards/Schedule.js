@@ -19,7 +19,7 @@ export const Schedule = ({ data }) => {
                         <table style={{ width: "100%" }}>
                             <tr style={{ textAlign: "left" }}>
                                 <th>Date</th>
-                                <th>Duration (hrs)</th>
+                                <th>Duration (minutes)</th>
                             </tr>
                             {
                                 scheduleData.lecture.map((lectureData, key) => {
