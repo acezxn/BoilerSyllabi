@@ -11,7 +11,7 @@ import { TextbookResources } from './info_cards/TextbookResources';
 import ClockLoader from "react-spinners/ClockLoader";
 import { theme } from '../themes/theme';
 import { RateMyProfessor } from './info_cards/RateMyProfessor';
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 const dashboardStyle = {
     margin: 10,
@@ -25,6 +25,7 @@ const dashboardStyle = {
 export const Analyzer = ({ file }) => {
     const [width, setWidth] = useState(window.innerWidth);
     const [professor, setProfessor] = useState("");
+    const [loadingState, setLoadingState] = useState("");
     const [selectedPdf, setSelectedPdf] = useState(null);
     const [pdfAnalysisData, setPdfAnalysisData] = useState(null);
     const [profAnalysisData, setProfAnalysisData] = useState(null);
@@ -76,14 +77,16 @@ export const Analyzer = ({ file }) => {
                 window.open("http://data.cs.purdue.edu:3000/main", "_blank", "noopener,noreferrer");
             }
             else if (professor.match(/[Tt]urkstra/)) {
-                window.open("https://turkeyland.net/pictures.php?date=04262023&pic=1", "_blank", "noopener,noreferrer");
+                window.open("https://turkeyland.net/album/04262023/images/IMG20230426102708.jpg", "_blank", "noopener,noreferrer");
             }
+            setLoadingState("Analyzing Professor");
             analyzeProfessor();
         }
     }, [professor]);
 
     useEffect(() => {
         if (selectedPdf) {
+            setLoadingState("Analyzing PDF");
             analyzeFile();
         }
     }, [selectedPdf]);
@@ -163,10 +166,12 @@ export const Analyzer = ({ file }) => {
                 ) : (
                     <div style={{
                         display: "flex",
+                        flexDirection: "column",
                         justifyContent: "center",
                         alignItems: "center",
                         height: "100vh"
                     }}>
+                        <Typography sx={{ margin: 2, fontStyle: "italic" }}>{loadingState}</Typography>
                         <ClockLoader size={150} color={theme.palette.text.primary} />
                     </div>
                 )
