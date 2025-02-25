@@ -17,24 +17,30 @@ export const Schedule = ({ data }) => {
                         Schedule
                     </Typography>
                     <Typography sx={{ fontWeight: "bold" }}>Lecture:</Typography>
-                    <TableContainer component={Paper} sx={{ margin: 0 }}>
-                        <Table sx={{ width: "100%", margin: 0 }}>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell sx={{ fontWeight: "bold" }}>Date</TableCell>
-                                    <TableCell sx={{ fontWeight: "bold" }}>Duration (minutes)</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {scheduleData.lecture.map((lectureData, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell>{lectureData.date}</TableCell>
-                                        <TableCell>{lectureData.duration}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                    {
+                        scheduleData.lecture.length > 0 ? (
+                            <TableContainer component={Paper} sx={{ margin: 0 }}>
+                                <Table sx={{ width: "100%", margin: 0 }}>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell sx={{ fontWeight: "bold" }}>Date</TableCell>
+                                            <TableCell sx={{ fontWeight: "bold" }}>Duration (minutes)</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {scheduleData.lecture.map((lectureData, index) => (
+                                            <TableRow key={index}>
+                                                <TableCell>{lectureData.date}</TableCell>
+                                                <TableCell>{lectureData.duration}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        ) : (
+                            <Typography>No Lecture information available</Typography>
+                        )
+                    }
                     <br />
                     <Typography sx={{ fontWeight: "bold" }}>Lab:</Typography>
                     {
