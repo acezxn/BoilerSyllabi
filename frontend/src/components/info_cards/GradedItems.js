@@ -1,6 +1,7 @@
-import { Typography } from "@mui/material";
-import { useEffect, useState } from "react"
+import { Box, Typography, List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
+import { useEffect, useState } from "react";
 import { cardStyle } from "../../themes/style/info_cards/info_card";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export const GradedItems = ({ data }) => {
     const [gradedItems, setGradedItems] = useState(null);
@@ -10,7 +11,7 @@ export const GradedItems = ({ data }) => {
     }, [data]);
 
     return (
-        <div style={cardStyle}>
+        <Box style={cardStyle}>
             {
                 gradedItems ? (
                     <>
@@ -19,30 +20,33 @@ export const GradedItems = ({ data }) => {
                         {
                             gradedItems.length > 0 ? (
                                 <>
-                                    {
-                                        gradedItems.map((gradedItem, key) => (
-                                            <div key={key}>
-                                                <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Title:</Typography>
-                                                <Typography sx={{ display: "inline-block" }}>{gradedItem.title}</Typography>
-                                                <br />
-                                                <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Summary:</Typography>
-                                                <Typography sx={{ display: "inline-block" }}>{gradedItem.summary}</Typography>
-                                                <br />
+                                    {gradedItems.map((gradedItem, key) => (
+                                        <Box key={key} sx={{ marginBottom: 2 }}>
+                                            <Box sx={{ mb: 2 }}>
+                                                <Typography sx={{ fontWeight: "bold" }}>Title:</Typography>
+                                                <Typography>{gradedItem.title}</Typography>
+                                            </Box>
+
+                                            <Box sx={{ mb: 2 }}>
+                                                <Typography sx={{ fontWeight: "bold" }}>Summary:</Typography>
+                                                <Typography>{gradedItem.summary}</Typography>
+                                            </Box>
+
+                                            <Box sx={{ mb: 2 }}>
                                                 <Typography sx={{ fontWeight: "bold" }}>Important Info:</Typography>
-                                                <ul>
-
+                                                <List>
                                                     {
-                                                        gradedItem.important_info.map((item, index) => {
-                                                            return <li><Typography key={index}>{item.info}</Typography></li>
-                                                        })
+                                                        gradedItem.important_info.map((item, index) => (
+                                                            <ListItem key={index}>
+                                                                <ListItemIcon><KeyboardArrowRightIcon /></ListItemIcon>
+                                                                <ListItemText primary={item.info} />
+                                                            </ListItem>
+                                                        ))
                                                     }
-
-                                                </ul>
-                                                <br />
-
-                                            </div>
-                                        ))
-                                    }
+                                                </List>
+                                            </Box>
+                                        </Box>
+                                    ))}
                                 </>
                             ) : (
                                 <Typography>No graded items available</Typography>
@@ -53,6 +57,6 @@ export const GradedItems = ({ data }) => {
                     <Typography>Loading</Typography>
                 )
             }
-        </div>
-    )
-}
+        </Box>
+    );
+};

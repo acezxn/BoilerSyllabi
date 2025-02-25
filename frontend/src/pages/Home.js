@@ -11,8 +11,7 @@ const bannerStyle = {
     width: "100vw",
     height: "100vh",
     overflow: "hidden",
-    filter: "blur(2px)",
-    filter: "sepia(100%) saturate(150%) hue-rotate(-20deg) brightness(0.2)"
+    filter: "blur(2px) sepia(100%) saturate(180%) hue-rotate(-20deg) brightness(0.2)"
 }
 
 export const Home = () => {
@@ -36,9 +35,9 @@ export const Home = () => {
                     <Analyzer file={selectedPdf} />
                 ) : (
                     <>
-                        <img style={bannerStyle} src="assets/banner.gif" alt="Full Screen Banner" class="full-screen-banner" />
-                        <Box sx={{ margin: 2, marginTop: "20vh" }}>
-                            <Typography variant="h2" sx={{ zIndex: 1, textAlign: "center" }}>BoilerSyllabi</Typography>
+                        <img style={bannerStyle} src="assets/banner.gif" alt="Full Screen Banner"/>
+                        <Box sx={{ margin: 10, marginTop: "12vh" }}>
+                            <Typography variant="h2" sx={{ zIndex: 1, textAlign: "center", fontFamily: "Bebas Neue" }}>BoilerSyllabi</Typography>
                             <div style={{ display: "flex", alignItems: "center" }}>
                                 <img src='/assets/icon.svg' width={500} />
                                 <div>

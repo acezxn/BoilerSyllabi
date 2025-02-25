@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useTheme } from '@mui/material/styles'; // To access theme in a component
-import { red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, yellow, amber, orange, deepOrange, brown, grey, blueGrey } from '@mui/material/colors';
 
 const options = {
     responsive: true,
@@ -9,9 +8,6 @@ const options = {
     plugins: {
         title: {
             display: false,
-        },
-        legend: {
-            display: false
         },
     },
 };
@@ -23,19 +19,21 @@ const GradingPieChart = (props) => {
 
     useEffect(() => {
         const colors = [
-            "#f5eccb", "#c1ad84", "#a08d5f", "#decda9"
+            "#f5eccb", "#c1ad84", "#a08d5f", "#decda9", "#e0f7fa", "#80deea", "#0097a7",
+            "#4caf50", "#cddc39", "#ffeb3b", "#ff9800", "#ff5722", "#f44336", "#9e9e9e"
         ];
         if (props.breakdownData) {
             const newPieChartData = props.breakdownData.map((item, index) => {
                 return {
                     label: item.name,
                     value: item.weight,
-                    color: colors[index % colors.length]
-                }
+                    color: colors[index % colors.length],
+                };
             });
             setPieChartData(newPieChartData);
         }
     }, [props.breakdownData, theme]);
+
     return (
         <PieChart
             options={options}
@@ -44,13 +42,12 @@ const GradingPieChart = (props) => {
                     data: pieChartData,
                 },
             ]}
-
             height={200}
-            
             margin={{ right: 20, left: 20 }}
             slotProps={{
-                legend: { hidden: true },
+                legend: { hidden: true }
             }}
+            tooltip={{ trigger: 'item' }}
             skipAnimation={false}
         />
     );

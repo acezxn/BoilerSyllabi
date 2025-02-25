@@ -29,7 +29,7 @@ export const theme = createTheme({
         },
         background: {
             default: "#18130b", // Background color
-            paper: "#635239", // Paper surface color
+            paper: "#4a3f2f", // Paper surface color
         },
         text: {
             primary: "#f2eadc", // Primary text color
@@ -37,6 +37,10 @@ export const theme = createTheme({
     },
     typography: {
         "fontFamily": "\"Roboto Mono\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\"",
+        "h2" : {
+            "fontFamily": "Bebas Neue",
+            "fontSize": 120
+        },
         "h4": {
             "fontFamily": "\"Roboto\",-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\"",
             "fontSize": "1.875rem",

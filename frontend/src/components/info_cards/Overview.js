@@ -1,6 +1,7 @@
-import { Box, Typography } from "@mui/material";
+import { Box, List, ListItem, ListItemIcon, ListItemText, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react"
 import { cardStyle } from "../../themes/style/info_cards/info_card";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 export const Overview = ({ data }) => {
     const [overviewData, setOverviewData] = useState(null);
@@ -13,31 +14,60 @@ export const Overview = ({ data }) => {
         <div style={cardStyle}>
             {
                 overviewData ? (
-                    <>
-                        <Typography variant="h5">Overview</Typography>
-                        <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Title:</Typography>
-                        <Typography sx={{ display: "inline-block" }}>{overviewData.title}</Typography>
-                        <br />
-                        <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Course ID:</Typography>
-                        <Typography sx={{ display: "inline-block" }}>{overviewData.course_id}</Typography>
-                        <br />
-                        <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Professor:</Typography>
-                        <Typography sx={{ display: "inline-block" }}>{overviewData.professor}</Typography>
-                        <br />
-                        <Typography sx={{ display: "inline-block", width: "30%", fontWeight: "bold" }}>Description:</Typography>
-                        <Typography sx={{ display: "inline-block" }}>{overviewData.description}</Typography>
-                        <Typography sx={{ fontWeight: "bold" }}>Learning Objectives:</Typography>
-                        <ul>
+                    <Box>
+                        <Typography variant="h5" gutterBottom>
+                            Overview
+                        </Typography>
 
-                            {
-                                overviewData.learning_objectives.map((objective, index) => {
-                                    return <li><Typography key={index}>{objective}</Typography></li>
-                                })
-                            }
+                        <Stack direction="row" spacing={2} mb={2}>
+                            <Typography variant="body1" sx={{ fontWeight: "bold", width: "30%" }}>
+                                Title:
+                            </Typography>
+                            <Typography variant="body1" sx={{ flex: 1 }}>
+                                {overviewData.title}
+                            </Typography>
+                        </Stack>
 
-                        </ul>
-                        <br />
-                    </>
+                        <Stack direction="row" spacing={2} mb={2}>
+                            <Typography variant="body1" sx={{ fontWeight: "bold", width: "30%" }}>
+                                Course ID:
+                            </Typography>
+                            <Typography variant="body1" sx={{ flex: 1 }}>
+                                {overviewData.course_id}
+                            </Typography>
+                        </Stack>
+
+                        <Stack direction="row" spacing={2} mb={2}>
+                            <Typography variant="body1" sx={{ fontWeight: "bold", width: "30%" }}>
+                                Professor:
+                            </Typography>
+                            <Typography variant="body1" sx={{ flex: 1 }}>
+                                {overviewData.professor}
+                            </Typography>
+                        </Stack>
+
+                        <Stack direction="column" spacing={0.1} mb={2}>
+                            <Typography variant="body1" sx={{ fontWeight: "bold", width: "30%" }}>
+                                Description:
+                            </Typography>
+                            <Typography variant="body1" sx={{ flex: 1 }}>
+                                {overviewData.description}
+                            </Typography>
+                        </Stack>
+
+                        <Typography variant="body1" sx={{ fontWeight: "bold", mb: 1 }}>
+                            Learning Objectives:
+                        </Typography>
+                        <List>
+                            {overviewData.learning_objectives.map((objective, index) => (
+                                <ListItem key={index} sx={{ padding: 0, paddingBottom: 2 }}>
+                                    <ListItemIcon><KeyboardArrowRightIcon /></ListItemIcon>
+                                    <ListItemText primary={objective} sx={{margin: 0}} />
+                                </ListItem>
+                            ))}
+                        </List>
+                    </Box>
+
                 ) : (
                     <Typography>Loading</Typography>
                 )

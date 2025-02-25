@@ -1,5 +1,5 @@
-import { Box, Typography } from "@mui/material";
-import { useEffect, useState } from "react"
+import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress } from "@mui/material";
+import { useEffect, useState } from "react";
 import { cardStyle } from "../../themes/style/info_cards/info_card";
 
 export const ImportantEvents = ({ data }) => {
@@ -10,39 +10,40 @@ export const ImportantEvents = ({ data }) => {
     }, [data]);
 
     return (
-        <div style={cardStyle}>
-            {
-                importantEventsData ? (
-                    <>
-                        <Typography variant="h5">Important Events</Typography>
-                        {
-                            importantEventsData.length > 0 ? (
-                                <table style={{ width: "100%" }}>
-                                    <tr style={{ textAlign: "left" }}>
-                                        <th>Event Name</th>
-                                        <th>Event Date (hrs)</th>
-                                    </tr>
-                                    {
-                                        importantEventsData.map((event, key) => {
-
-                                            return (
-                                                <tr key={key}>
-                                                    <td>{event.name}</td>
-                                                    <td>{event.date}</td>
-                                                </tr>
-                                            )
-                                        })
-                                    }
-                                </table>
-                            ) : (
-                                <Typography>No important events available</Typography>
-                            )
-                        }
-                    </>
-                ) : (
-                    <Typography>Loading</Typography>
-                )
-            }
-        </div>
-    )
-}
+        <Box style={cardStyle}>
+            {importantEventsData ? (
+                <>
+                    <Typography variant="h5" gutterBottom>
+                        Important Events
+                    </Typography>
+                    {importantEventsData.length > 0 ? (
+                        <TableContainer>
+                            <Table sx={{ width: "100%" }}>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell sx={{ fontWeight: "bold" }}>Event Name</TableCell>
+                                        <TableCell sx={{ fontWeight: "bold" }}>Event Date</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {importantEventsData.map((event, key) => (
+                                        <TableRow key={key}>
+                                            <TableCell>{event.name}</TableCell>
+                                            <TableCell>{event.date}</TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                    ) : (
+                        <Typography>No important events available</Typography>
+                    )}
+                </>
+            ) : (
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                    <CircularProgress />
+                </Box>
+            )}
+        </Box>
+    );
+};
