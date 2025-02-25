@@ -1,19 +1,22 @@
-import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, CircularProgress } from "@mui/material";
+import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, CircularProgress, IconButton, Stack } from "@mui/material";
 import { useEffect, useState } from "react";
 import { cardStyle } from "../../themes/style/info_cards/info_card";
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import GenericModal from "../modal/generic_modal";
 
-export const TextbookResources = ({ data }) => {
-    const [textbookResources, setTextbookResources] = useState([]);
-
-    useEffect(() => {
-        setTextbookResources(data);
-    }, [data]);
-
+const TextbookResourcesContent = ({ textbookResources, showExpandButton, onModalOpen }) => {
     return (
-        <Box style={cardStyle}>
-            <Typography variant="h5" gutterBottom>
-                Textbooks
-            </Typography>
+        <>
+            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
+                <Typography variant="h5">Textbooks</Typography>
+                {
+                    showExpandButton &&
+                    <IconButton size="small" onClick={onModalOpen}>
+                        <FullscreenIcon />
+                    </IconButton>
+                }
+            </Stack>
+
             {textbookResources.length > 0 ? (
                 <TableContainer>
                     <Table sx={{ width: "100%" }}>
@@ -35,6 +38,37 @@ export const TextbookResources = ({ data }) => {
                 </TableContainer>
             ) : (
                 <Typography>No textbook information available</Typography>
+            )}
+        </>
+    );
+};
+
+export const TextbookResources = ({ data }) => {
+    const [textbookResources, setTextbookResources] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
+
+    useEffect(() => {
+        setTextbookResources(data);
+    }, [data]);
+
+    return (
+        <Box style={cardStyle}>
+            {textbookResources ? (
+                <>
+                    <GenericModal open={modalOpen} onClose={() => setModalOpen(false)}>
+                        <TextbookResourcesContent textbookResources={textbookResources} showExpandButton={false} />
+                    </GenericModal>
+
+                    <TextbookResourcesContent
+                        textbookResources={textbookResources}
+                        showExpandButton={true}
+                        onModalOpen={() => setModalOpen(true)}
+                    />
+                </>
+            ) : (
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                    <CircularProgress />
+                </Box>
             )}
         </Box>
     );

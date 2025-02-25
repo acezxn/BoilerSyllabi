@@ -109,17 +109,17 @@ export const Analyzer = ({ file }) => {
                         {
                             width > 1200 ? (
                                 <>
-                                    <div style={{ minWidth: "calc(100vw / 3 - 20)" }}>
+                                    <div style={{ minWidth: "calc(100vw / 3 - 20px)" }}>
                                         <Overview data={pdfAnalysisData.overview} />
                                         <ContactInfo data={pdfAnalysisData.contact} />
                                         <Policies data={pdfAnalysisData.policies} />
                                     </div>
-                                    <div style={{ minWidth: "calc(100vw / 3 - 20)" }}>
+                                    <div style={{ minWidth: "calc(100vw / 3 - 20px)" }}>
                                         <Schedule data={pdfAnalysisData.schedule} />
                                         <ImportantEvents data={pdfAnalysisData.important_events} />
                                         <TextbookResources data={pdfAnalysisData.textbook_resources} />
                                     </div>
-                                    <div style={{ minWidth: "calc(100vw / 3 - 20)" }}>
+                                    <div style={{ minWidth: "calc(100vw / 3 - 20px)" }}>
                                         <RateMyProfessor data={profAnalysisData} />
                                         <Grading data={pdfAnalysisData.grading} />
                                         <GradedItems data={pdfAnalysisData.graded_items} />
@@ -130,13 +130,13 @@ export const Analyzer = ({ file }) => {
                                     {
                                         width > 800 ? (
                                             <>
-                                                <div style={{ minWidth: "calc(100vw / 2 - 20)" }}>
+                                                <div style={{ minWidth: "calc(100vw / 2 - 15px)" }}>
                                                     <Overview data={pdfAnalysisData.overview} />
                                                     <ContactInfo data={pdfAnalysisData.contact} />
                                                     <Policies data={pdfAnalysisData.policies} />
                                                     <TextbookResources data={pdfAnalysisData.textbook_resources} />
                                                 </div>
-                                                <div style={{ minWidth: "calc(100vw / 2 - 20)" }}>
+                                                <div style={{ minWidth: "calc(100vw / 2 - 15px)" }}>
                                                     <Schedule data={pdfAnalysisData.schedule} />
                                                     <ImportantEvents data={pdfAnalysisData.important_events} />
                                                     <Grading data={pdfAnalysisData.grading} />
@@ -145,7 +145,7 @@ export const Analyzer = ({ file }) => {
                                             </>
                                         ) : (
                                             <>
-                                                <div style={{ minWidth: "calc(100vw - 20)" }}>
+                                                <div style={{ minWidth: "calc(100vw - 20px)" }}>
                                                     <Overview data={pdfAnalysisData.overview} />
                                                     <Schedule data={pdfAnalysisData.schedule} />
                                                     <ContactInfo data={pdfAnalysisData.contact} />
