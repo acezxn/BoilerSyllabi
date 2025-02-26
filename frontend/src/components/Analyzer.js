@@ -115,7 +115,7 @@ export const Analyzer = ({ file }) => {
                                         <Policies data={pdfAnalysisData.policies} />
                                     </div>
                                     <div style={{ minWidth: "calc(100vw / 3 - 20px)" }}>
-                                        <Schedule data={pdfAnalysisData.schedule} />
+                                        <Schedule data={pdfAnalysisData.schedule} courseId={pdfAnalysisData.overview.course_id}/>
                                         <ImportantEvents data={pdfAnalysisData.important_events} />
                                         <TextbookResources data={pdfAnalysisData.textbook_resources} />
                                     </div>
@@ -137,7 +137,7 @@ export const Analyzer = ({ file }) => {
                                                     <TextbookResources data={pdfAnalysisData.textbook_resources} />
                                                 </div>
                                                 <div style={{ minWidth: "calc(100vw / 2 - 15px)" }}>
-                                                    <Schedule data={pdfAnalysisData.schedule} />
+                                                    <Schedule data={pdfAnalysisData.schedule} courseId={pdfAnalysisData.overview.course_id}/>
                                                     <ImportantEvents data={pdfAnalysisData.important_events} />
                                                     <Grading data={pdfAnalysisData.grading} />
                                                     <GradedItems data={pdfAnalysisData.graded_items} />
@@ -147,7 +147,7 @@ export const Analyzer = ({ file }) => {
                                             <>
                                                 <div style={{ minWidth: "calc(100vw - 20px)" }}>
                                                     <Overview data={pdfAnalysisData.overview} />
-                                                    <Schedule data={pdfAnalysisData.schedule} />
+                                                    <Schedule data={pdfAnalysisData.schedule} courseId={pdfAnalysisData.overview.course_id}/>
                                                     <ContactInfo data={pdfAnalysisData.contact} />
                                                     <ImportantEvents data={pdfAnalysisData.important_events} />
                                                     <Grading data={pdfAnalysisData.grading} />

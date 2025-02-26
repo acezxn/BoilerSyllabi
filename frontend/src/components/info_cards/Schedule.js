@@ -1,10 +1,35 @@
-import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, Stack } from "@mui/material";
+import { Box, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton, Stack, Link } from "@mui/material";
 import { useEffect, useState } from "react";
 import { cardStyle } from "../../themes/style/info_cards/info_card";
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import GenericModal from "../modal/generic_modal";
+import { theme } from "../../themes/theme";
 
-const ScheduleContent = ({ scheduleData, showExpandButton, onModalOpen }) => {
+const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+
+const googleCalendarLink = (eventTitle, eventDescription, eventLocation, startDate, endDate) => {
+    const recurrenceRule = "RRULE:FREQ=WEEKLY";
+
+    // Encode the event details for the URL
+    const encodedTitle = encodeURIComponent(eventTitle);
+    const encodedDescription = encodeURIComponent(eventDescription);
+    const encodedLocation = encodeURIComponent(eventLocation);
+
+    // Construct the Google Calendar URL with recurrence settings
+    const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodedTitle}&dates=${startDate}/${endDate}&details=${encodedDescription}&location=${encodedLocation}&recur=${recurrenceRule}`;
+
+    return googleCalendarUrl;
+};
+
+const getEventTimestamp = (weekday, time_of_day, duration_minutes) => {
+    var date = new Date();
+    let [hours, minutes] = time_of_day.split(':');
+    date.setDate(date.getDate() + (((weekdays.indexOf(weekday) + 7 - date.getDay()) % 7) || 7));
+    date.setHours(parseInt(hours), parseInt(minutes) + parseInt(duration_minutes), 0, 0);
+    return date.toISOString().replace(/[^\w\s]/gi, '');
+}
+
+const ScheduleContent = ({ scheduleData, courseId, showExpandButton, onModalOpen }) => {
     return (
         <>
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
@@ -31,7 +56,30 @@ const ScheduleContent = ({ scheduleData, showExpandButton, onModalOpen }) => {
                             <TableBody>
                                 {scheduleData.lecture.map((lectureData, index) => (
                                     <TableRow key={index}>
-                                        <TableCell sx={{ padding: 1 }}>{lectureData.date}</TableCell>
+                                        <TableCell sx={{ padding: 1 }}>
+                                            <Link
+                                                sx={{ color: theme.palette.secondary.main }}
+                                                target="_blank" rel="noopener noreferrer"
+                                                href={
+                                                    googleCalendarLink(
+                                                        `${courseId} Lecture`,
+                                                        `${courseId} Lecture`,
+                                                        "",
+                                                        getEventTimestamp(
+                                                            lectureData.date.split(" ")[0].toLowerCase(),
+                                                            lectureData.date.split(" ")[1].toLowerCase(),
+                                                            0
+                                                        ),
+                                                        getEventTimestamp(
+                                                            lectureData.date.split(" ")[0].toLowerCase(),
+                                                            lectureData.date.split(" ")[1].toLowerCase(),
+                                                            lectureData.duration
+                                                        )
+                                                    )
+                                                }>
+                                                {lectureData.date}
+                                            </Link>
+                                        </TableCell>
                                         <TableCell sx={{ padding: 1 }}>{lectureData.duration}</TableCell>
                                     </TableRow>
                                 ))}
@@ -57,7 +105,30 @@ const ScheduleContent = ({ scheduleData, showExpandButton, onModalOpen }) => {
                             <TableBody>
                                 {scheduleData.lab.map((labData, index) => (
                                     <TableRow key={index}>
-                                        <TableCell sx={{ padding: 1 }}>{labData.date}</TableCell>
+                                        <TableCell sx={{ padding: 1 }}>
+                                            <Link
+                                            sx={{ color: theme.palette.secondary.main }}
+                                            target="_blank" rel="noopener noreferrer"
+                                            href={
+                                                googleCalendarLink(
+                                                    `${courseId} Lab`,
+                                                    `${courseId} Lab`,
+                                                    "",
+                                                    getEventTimestamp(
+                                                        labData.date.split(" ")[0].toLowerCase(),
+                                                        labData.date.split(" ")[1].toLowerCase(),
+                                                        0
+                                                    ),
+                                                    getEventTimestamp(
+                                                        labData.date.split(" ")[0].toLowerCase(),
+                                                        labData.date.split(" ")[1].toLowerCase(),
+                                                        labData.duration
+                                                    )
+                                                )
+                                            }>
+                                            {labData.date}
+                                        </Link>
+                                        </TableCell>
                                         <TableCell sx={{ padding: 1 }}>{labData.duration}</TableCell>
                                     </TableRow>
                                 ))}
@@ -83,7 +154,30 @@ const ScheduleContent = ({ scheduleData, showExpandButton, onModalOpen }) => {
                             <TableBody>
                                 {scheduleData.office_hour.map((officeHourData, index) => (
                                     <TableRow key={index}>
-                                        <TableCell sx={{ padding: 1 }}>{officeHourData.date}</TableCell>
+                                        <TableCell sx={{ padding: 1 }}>
+                                        <Link
+                                                sx={{ color: theme.palette.secondary.main }}
+                                                target="_blank" rel="noopener noreferrer"
+                                                href={
+                                                    googleCalendarLink(
+                                                        `${courseId} Office Hour`,
+                                                        `${courseId} Office Hour`,
+                                                        "",
+                                                        getEventTimestamp(
+                                                            officeHourData.date.split(" ")[0].toLowerCase(),
+                                                            officeHourData.date.split(" ")[1].toLowerCase(),
+                                                            0
+                                                        ),
+                                                        getEventTimestamp(
+                                                            officeHourData.date.split(" ")[0].toLowerCase(),
+                                                            officeHourData.date.split(" ")[1].toLowerCase(),
+                                                            officeHourData.duration
+                                                        )
+                                                    )
+                                                }>
+                                                {officeHourData.date}
+                                            </Link>
+                                        </TableCell>
                                         <TableCell sx={{ padding: 1 }}>{officeHourData.duration}</TableCell>
                                     </TableRow>
                                 ))}
@@ -98,7 +192,7 @@ const ScheduleContent = ({ scheduleData, showExpandButton, onModalOpen }) => {
     );
 };
 
-export const Schedule = ({ data }) => {
+export const Schedule = ({ data, courseId }) => {
     const [scheduleData, setScheduleData] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -111,11 +205,12 @@ export const Schedule = ({ data }) => {
             {scheduleData ? (
                 <>
                     <GenericModal open={modalOpen} onClose={() => setModalOpen(false)}>
-                        <ScheduleContent scheduleData={scheduleData} showExpandButton={false} />
+                        <ScheduleContent scheduleData={scheduleData} courseId={courseId} showExpandButton={false} />
                     </GenericModal>
 
                     <ScheduleContent
                         scheduleData={scheduleData}
+                        courseId={courseId}
                         showExpandButton={true}
                         onModalOpen={() => setModalOpen(true)}
                     />
